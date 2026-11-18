@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects';
+export function getStaticPaths() {
+  return projects.map((project, index) => ({ params: { slug: project.slug }, props: { project, next: projects[(index + 1) % projects.length] } }));
+}
+const { project: p, next } = Astro.props;
+---
+<Layout title={p.title+' — Lucas Tuzza'} description={p.intro}><article class="shell detail" style={'--accent:'+p.color}>
+<a class="back" href="/#work">← Selected work</a><p class="over">{p.category}</p><h1>{p.title}<em>.</em></h1><p class="lead">{p.intro}</p>
+<div class="banner"><img src={'/art/'+p.slug+'.svg'} alt="" /></div>
+<div class="casebody"><aside><dl><dt>Team</dt><dd>{p.team}</dd><dt>Project scope</dt><dd>{p.scope}</dd><dt>Focus</dt><dd>{p.skills.join(' · ')}</dd></dl></aside>
+<div><h2>Overview</h2><p>{p.summary}</p><h2>My contribution</h2><ul>{p.contributions.map(line => <li>{line}</li>)}</ul></div></div>
+<a class="next" href={'/projects/'+next.slug+'/'}><small>Next project</small>{next.title} ↗</a></article></Layout>
