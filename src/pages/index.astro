@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects';
+---
+<Layout title="Lucas Tuzza — Senior Unity & C# Developer" description="Selected game development and automotive HMI work by Lucas Tuzza, a senior Unity and C# developer based in Brazil.">
+<div class="shell">
+<section class="hero"><div class="hero-copy"><p class="over"><i></i> Senior Unity / C# developer</p>
+<h1>Lucas<br/><em>Tuzza.</em></h1>
+<p class="lead">I build real-time systems for games and automotive interfaces.</p>
+<a class="button" href="#work">Explore my work <span>↓</span></a></div>
+<div class="hero-art"><img src="/art/form.svg" alt="" /><div class="caption"><span>Parametric knot</span><span>3D / wireframe</span></div></div></section>
+<section id="work" class="section"><div class="sectionhead"><h2>Selected work<span>.</span></h2><span class="meta">Games &amp; automotive</span></div>
+<div class="gallery">{projects.map(p => <a class="card" href={'/projects/'+p.slug+'/'} style={'--accent:'+p.color}>
+<div class="plate"><img src={'/art/'+p.slug+'.svg'} loading="lazy" alt="" /></div>
+<div class="cardbody"><p class="meta">{p.category} <b> / </b> {p.scope}</p><h3>{p.title}<span aria-hidden="true">↗</span></h3><p>{p.intro}</p></div></a>)}</div></section>
+<section class="section two" id="about"><h2>About<span>.</span></h2><div><p class="statement">I’m a German developer based in São José dos Campos, Brazil.</p><p>My work spans multiplayer services, gameplay systems, technical art, and embedded visualization. I enjoy the parts of Unity development where what players see depends on how well the underlying systems work.</p><p>Alongside feature development, I build editor tools and integrate Unity Edit Mode and Play Mode tests into GitLab CI/CD.</p></div></section>
+<section class="section two" id="contact"><h2>Contact<span>.</span></h2><div><p class="statement">Have a Unity project in mind?</p><p>I’m open to remote contract work from Brazil.</p><a class="contact" href="mailto:94.lucasbaum@gmail.com">94.lucasbaum@gmail.com ↗</a><p><a href="https://github.com/xlazarin-hub">GitHub ↗</a></p></div></section></div></Layout>
